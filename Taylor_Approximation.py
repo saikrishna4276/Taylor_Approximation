@@ -1,6 +1,5 @@
 import jax.numpy as jnp
 from jax import grad
-import numpy as np
 from math import factorial
 import matplotlib.pyplot as plt
 import streamlit as st
