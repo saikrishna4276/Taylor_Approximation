@@ -27,7 +27,7 @@ def taylor(fun, degree, x_plot, a=0.):
 
 with st.sidebar:
     # Create a slider for degree
-    degree = st.slider("Degree", 1, 15, 1)
+    degree = st.slider("Degree", 1, 10, 1)
     a = st.text_input("about a","0")
 a = float(a)
 x_plot = jnp.linspace(a-2,a+2, 100)
@@ -37,5 +37,6 @@ x = jnp.linspace(a-2, a+2, 100)
 fig, ax = plt.subplots()
 ax.plot(x,approximation,label='Approximated Curve')
 ax.plot(x,z(x_plot),label='Actual curve')
+ax.legend()
 
 st.pyplot(fig)
