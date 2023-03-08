@@ -2,4 +2,3 @@ matplotlib
 jax
 sympy
 streamlit
-math
