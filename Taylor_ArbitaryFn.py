@@ -7,7 +7,9 @@ from sympy import *
 from sympy.abc import X,x
 from sympy.parsing.sympy_parser import parse_expr
 from math import factorial
-
+st.title("Taylor Approximation")
+st.write(
+    "This app shows the taylor approximation of a function with varying degrees")
 with st.sidebar:
     z = parse_expr(st.text_input('Give an expession', 'sin(x)'))
     z = lambdify(x,z,"jax")
