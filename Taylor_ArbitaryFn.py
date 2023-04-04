@@ -11,11 +11,19 @@ st.title("Taylor Approximation")
 st.write(
     "This app shows the taylor approximation of a function with varying degrees")
 with st.sidebar:
-    z = parse_expr(st.text_input('Give an expession', 'sin(x)'))
+    try:
+        z = parse_expr(st.text_input('Give an expession', 'sin(x)'))
+    except:
+        st.warning("Invalid expression")
+        z = parse_expr('sin(x)')
     z = lambdify(x,z,"jax")
 def f(a):
     global z
-    return z(a)
+    try:
+        return z(a)
+    except:
+        st.warning(f"Function not defined around {a}")
+        return jnp.nan
 def taylor(fun, degree, x_plot, a=0.):
     y = fun(a)
     #st.write(y)
@@ -23,6 +31,11 @@ def taylor(fun, degree, x_plot, a=0.):
     for i in range(1,degree+1):
         y += (gradient(a)*(x_plot-a)**i)/factorial(i)
         gradient = grad(gradient)
+    has_nan = jnp.isnan(y)
+    with st.sidebar:
+        if True in has_nan:
+            print('True')
+            st.warning(f"The approximation is not valid, the function is either not differentiable or not continuous or not defined at point {a}")
     return y
 
 with st.sidebar:
@@ -30,10 +43,10 @@ with st.sidebar:
     degree = st.slider("Degree", 1, 10, 1)
     a = st.text_input("about a","0")
 a = float(a)
-x_plot = jnp.linspace(a-2,a+2, 100)
+x_plot = jnp.linspace(a-2,a+2,100)
 approximation = taylor(f,degree,x_plot,a)
 #st.write(approximation)
-x = jnp.linspace(a-2, a+2, 100)
+x = jnp.linspace(a-2, a+2,100)
 fig, ax = plt.subplots()
 ax.plot(x,approximation,label='Approximated Curve')
 ax.plot(x,z(x_plot),label='Actual curve')
