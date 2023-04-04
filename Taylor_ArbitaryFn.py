@@ -31,10 +31,8 @@ def taylor(fun, degree, x_plot, a=0.):
     for i in range(1,degree+1):
         y += (gradient(a)*(x_plot-a)**i)/factorial(i)
         gradient = grad(gradient)
-    has_nan = jnp.isnan(y)
-    with st.sidebar:
-        if True in has_nan:
-            st.warning(f"The approximation is not valid, the function is either not differentiable or not continuous or not defined at point {a}")
+    y = jnp.nan_to_num(y, nan=0.0, posinf=10e+6, neginf=-10e+6)
+    
     return y
 
 with st.sidebar:
