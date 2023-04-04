@@ -34,7 +34,6 @@ def taylor(fun, degree, x_plot, a=0.):
     has_nan = jnp.isnan(y)
     with st.sidebar:
         if True in has_nan:
-            print('True')
             st.warning(f"The approximation is not valid, the function is either not differentiable or not continuous or not defined at point {a}")
     return y
 
