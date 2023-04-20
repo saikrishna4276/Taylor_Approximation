@@ -29,3 +29,12 @@ For Example:
 Example: $log(x)$ at $a = 0$
 
 ![log](./images/large.png)
+
+# Valid Functions (all case-sensitive (lower))
+* exponential - ```exp(x)```
+* log - ```log(x)```
+* ploynomial - ```x**2```  or ```x**n```
+* ```1/x``` ,```1/x**n``` where x!=0
+* ```sin(x)```, ```tan(x)```, ```cos(x)``` etc
+
+```Note:``` Symbols are case-insensitive.

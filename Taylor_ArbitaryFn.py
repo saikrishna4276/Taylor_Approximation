@@ -4,7 +4,7 @@ import jax.numpy as jnp
 from jax import grad
 # Store the initial value of widgets in session state
 from sympy import *
-from sympy.abc import X,x
+from sympy.abc import *
 from sympy.parsing.sympy_parser import parse_expr
 from math import factorial
 st.title("Taylor Approximation")
@@ -13,10 +13,15 @@ st.write(
 with st.sidebar:
     try:
         z = parse_expr(st.text_input('Give an expession', 'sin(x)'))
+        symbols = set(z.free_symbols)
+        symbols_tuple = tuple(symbols)
+        z = lambdify(symbols_tuple,z,"jax") 
     except:
         st.warning("Invalid expression")
         z = parse_expr('sin(x)')
-    z = lambdify(x,z,"jax")
+        symbols = set(z.free_symbols)
+        symbols_tuple = tuple(symbols)
+        z = lambdify(symbols_tuple,z,"jax")
 def f(a):
     global z
     try:
