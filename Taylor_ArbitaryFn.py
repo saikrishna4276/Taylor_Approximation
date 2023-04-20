@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import jax.numpy as jnp
 from jax import grad
+import sympy
 # Store the initial value of widgets in session state
 from sympy import *
 from sympy.abc import *
@@ -46,6 +47,14 @@ with st.sidebar:
     a = st.text_input("about a","0")
 a = float(a)
 x_plot = jnp.linspace(a-2,a+2,100)
+try:
+    z(x_plot)
+except:
+    st.warning("Invalid expression")
+    z = parse_expr('sin(x)')
+    symbols = set(z.free_symbols)
+    symbols_tuple = tuple(symbols)
+    z = lambdify(symbols_tuple,z,"jax")
 approximation = taylor(f,degree,x_plot,a)
 #st.write(approximation)
 x = jnp.linspace(a-2, a+2,100)
