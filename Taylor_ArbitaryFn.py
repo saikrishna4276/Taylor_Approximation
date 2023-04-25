@@ -61,7 +61,7 @@ x = jnp.linspace(a-2, a+2,100)
 fig, ax = plt.subplots()
 ax.plot(x,approximation,label='Approximated Curve')
 ax.plot(x,z(x_plot),label='Actual curve')
-ax.set_ylim(min(z(x_plot)), max(z(x_plot)))
+ax.set_ylim(min(z(x_plot))-2, max(z(x_plot))+2)
 ax.legend()
 
 st.pyplot(fig)
