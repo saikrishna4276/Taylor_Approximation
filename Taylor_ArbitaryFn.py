@@ -57,7 +57,7 @@ except:
     z = lambdify(symbols_tuple,z,"jax")
 approximation = taylor(f,degree,x_plot,a)
 #st.write(approximation)
-x = jnp.linspace(a-2, a+2,100)
+x = jnp.linspace(a-1, a+1,100)
 fig, ax = plt.subplots()
 ax.plot(x,approximation,label='Approximated Curve')
 ax.plot(x,z(x_plot),label='Actual curve')
