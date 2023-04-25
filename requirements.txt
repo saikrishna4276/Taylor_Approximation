@@ -3,3 +3,4 @@ jax
 sympy
 streamlit
 jaxlib
+mpld3

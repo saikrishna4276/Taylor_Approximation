@@ -8,6 +8,9 @@ A degree n can be chosen using slider from 1 to n. (Max value of n is 10)
 
 The app for Taylor approximation of arbitary function about any point can be acceded [here](https://saikrishna4276-taylor-approximation-taylor-arbitaryfn-jke7ay.streamlit.app/)
 
+The plot is also provided with two options:
+1. Fixed: The plot is fixed
+2. Dynamic: Interactive plot
 
 ### NOTE:
 1. Make sure the expression are valid, 
