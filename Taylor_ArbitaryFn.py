@@ -8,6 +8,8 @@ from sympy import *
 from sympy.abc import *
 from sympy.parsing.sympy_parser import parse_expr
 from math import factorial
+import mpld3
+import streamlit.components.v1 as components
 st.title("Taylor Approximation")
 st.write(
     "This app shows the taylor approximation of a function with varying degrees")
@@ -56,12 +58,23 @@ except:
     symbols_tuple = tuple(symbols)
     z = lambdify(symbols_tuple,z,"jax")
 approximation = taylor(f,degree,x_plot,a)
+
 #st.write(approximation)
 x = jnp.linspace(a-1, a+1,100)
 fig, ax = plt.subplots()
-ax.plot(x,approximation,label='Approximated Curve')
-ax.plot(x,z(x_plot),label='Actual curve')
-ax.set_ylim(min(z(x_plot))-2, max(z(x_plot))+2)
-ax.legend()
 
-st.pyplot(fig)
+dataset = st.sidebar.selectbox("Select Plot-view", ("Fixed", "Dynamic"))
+if dataset == "Fixed":
+    ax.plot(x,approximation,label='Approximated Curve')
+    ax.plot(x,z(x_plot),label='Actual curve')
+    ax.set_ylim(min(z(x_plot))-2, max(z(x_plot))+2)
+    ax.legend()
+    st.pyplot(fig)
+else:
+    ax.plot(x,approximation,label='Approximated Curve')
+    ax.plot(x,z(x_plot),label='Actual curve')
+    ax.set_ylim(min(z(x_plot))-2, max(z(x_plot))+2)
+    ax.legend()
+    fig_html = mpld3.fig_to_html(fig, template_type="general" )
+    components.html(fig_html, height=800, width=1600)
+
