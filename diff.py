@@ -6,4 +6,7 @@ for j in range(3):
     pass
 for k in range(3):
     print(k)
-    break
+    continue
+for l in range(3):
+    print(l)
+    pass
