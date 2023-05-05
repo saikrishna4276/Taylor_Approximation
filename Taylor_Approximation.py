@@ -21,8 +21,9 @@ x = jnp.linspace(-jnp.pi, jnp.pi, 100)
 # Create a streamlit app
 st.title("Taylor Approximation")
 st.write(
-    "This app shows the taylor approximation of a function with varying degrees")
+    "This app show the taylor approximation of a function with varying degrees")
 
+st.write("DEMO: f(x) = sin(x)")
 # The sidebar contains the sliders
 with st.sidebar:
     # Create a slider for degree
