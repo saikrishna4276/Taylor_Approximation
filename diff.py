@@ -9,4 +9,11 @@ for k in range(3):
     continue
 for l in range(3):
     print(l)
+    if l==1:
+        break
+
+for m in range(3):
+    print(m)
+    if m==1:
+        break
     pass
