@@ -14,6 +14,12 @@ for l in range(3):
 
 for m in range(3):
     print(m)
-    if m==1:
-        break
+    if n==1:
+        n+=1
+        continue
     pass
+for n in range(3):
+    print(n)
+    if n==1:
+        n+=1
+        break
