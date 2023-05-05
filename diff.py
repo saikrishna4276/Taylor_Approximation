@@ -22,4 +22,12 @@ for n in range(3):
     print(n)
     if n==1:
         n+=1
-        break
+        continue
+    pass
+
+for o in range(3):
+    print(o)
+    if o==1:
+        o+=1
+        continue
+    pass
